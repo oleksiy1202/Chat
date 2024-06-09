@@ -53,23 +53,3 @@ body {
     font-size: 1.2em;
     margin-left: 10px;
 }
-
-
-/* Додаткові стилі для кожного користувача (styles.css): */
-.message.message-from-oleksiy {
-    background-color: #ffcccc;
-}
-
-.message.message-from-Iruna {
-    background-color: #ccffcc;
-}
-
-.message.message-from-Nata {
-    background-color: #ccccff;
-}
-
-.message.message-from-oleg {
-    background-color: #000000;
-}
-
-/* Додайте більше кольорів для інших користувачів за потреби */

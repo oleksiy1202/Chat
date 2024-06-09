@@ -6,36 +6,37 @@ function getRandomColor() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
 
+function getCurrentTime() {
+    const time = new Date();
+    return time.toLocaleTimeString();
+}
+
 function login() {
     const usernameInput = document.getElementById('username');
     currentUser = usernameInput.value;
-    const userColor = getRandomColor();
-
     if (currentUser) {
         if (!users[currentUser]) {
-            users[currentUser] = userColor;
-            sendSystemMessage(`${currentUser} has joined the chat.`);
+            users[currentUser] = getRandomColor();
+            sendSystemMessage(`${currentUser} приєднався до чату о ${getCurrentTime()}.`);
         }
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('chat-container').style.display = 'block';
-        document.getElementById('current-user').textContent = `Logged in as: ${currentUser}`;
+        document.getElementById('current-user').textContent = `Ви увійшли як: ${currentUser}`;
         usernameInput.value = '';
     }
 }
 
 function loginAsGuest() {
-    currentUser = 'Guest-' + Math.floor(Math.random() * 1000);
-    const userColor = getRandomColor();
-
-    users[currentUser] = userColor;
-    sendSystemMessage(`${currentUser} has joined the chat.`);
+    currentUser = 'Гість-' + Math.floor(Math.random() * 1000);
+    users[currentUser] = getRandomColor();
+    sendSystemMessage(`${currentUser} приєднався до чату о ${getCurrentTime()}.`);
     document.getElementById('login-container').style.display = 'none';
     document.getElementById('chat-container').style.display = 'block';
-    document.getElementById('current-user').textContent = `Logged in as: ${currentUser}`;
+    document.getElementById('current-user').textContent = `Ви увійшли як: ${currentUser}`;
 }
 
 function logout() {
-    sendSystemMessage(`${currentUser} has left the chat.`);
+    sendSystemMessage(`${currentUser} покинув чат о ${getCurrentTime()}.`);
     currentUser = '';
     document.getElementById('login-container').style.display = 'block';
     document.getElementById('chat-container').style.display = 'none';

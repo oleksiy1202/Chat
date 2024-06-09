@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Chat App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="login-container">
+        <h2>Enter your name to join the chat:</h2>
+        <input type="text" id="username" placeholder="Your name">
+        <button onclick="login()">Join</button>
+    </div>
+    <div id="chat-container" style="display: none;">
+        <div id="chat-header">
+            <span id="current-user"></span>
+            <button onclick="logout()">Change User</button>
+            <button onclick="clearChat()">Clear Chat</button>
+        </div>
+        <div id="chat-window"></div>
+        <div id="message-input">
+            <input type="text" id="message" placeholder="Type your message"
+                onkeydown="if(event.key === 'Enter') sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

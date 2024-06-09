@@ -1,12 +1,19 @@
-let users = [];
+let users = {};
 let currentUser = '';
+const colors = ['#ffcccc', '#ccffcc', '#ccccff', '#ffffcc', '#ccffff', '#ffccff'];
+
+function getRandomColor() {
+    return colors[Math.floor(Math.random() * colors.length)];
+}
 
 function login() {
     const usernameInput = document.getElementById('username');
     currentUser = usernameInput.value;
+    const userColor = getRandomColor();
+
     if (currentUser) {
-        if (!users.includes(currentUser)) {
-            users.push(currentUser);
+        if (!users[currentUser]) {
+            users[currentUser] = userColor;
             sendSystemMessage(`${currentUser} has joined the chat.`);
         }
         document.getElementById('login-container').style.display = 'none';
@@ -14,6 +21,17 @@ function login() {
         document.getElementById('current-user').textContent = `Logged in as: ${currentUser}`;
         usernameInput.value = '';
     }
+}
+
+function loginAsGuest() {
+    currentUser = 'Guest-' + Math.floor(Math.random() * 1000);
+    const userColor = getRandomColor();
+
+    users[currentUser] = userColor;
+    sendSystemMessage(`${currentUser} has joined the chat.`);
+    document.getElementById('login-container').style.display = 'none';
+    document.getElementById('chat-container').style.display = 'block';
+    document.getElementById('current-user').textContent = `Logged in as: ${currentUser}`;
 }
 
 function logout() {
@@ -28,7 +46,7 @@ function sendMessage() {
     if (messageText) {
         const messageContainer = document.createElement('div');
         messageContainer.classList.add('message');
-        messageContainer.classList.add('message-from-' + currentUser);
+        messageContainer.style.backgroundColor = users[currentUser];
 
         if (currentUser) {
             messageContainer.classList.add('current-user');

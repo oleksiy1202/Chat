@@ -56,7 +56,6 @@ body {
 }
 
 .message.current-user {
-    background-color: #007BFF;
     color: white;
     align-self: flex-end;
     margin-left: auto;
@@ -115,6 +114,10 @@ button {
 
 .message.message-from-Nata {
     background-color: #ccccff;
+}
+
+.message.message-from-oleg {
+    background-color: #000000;
 }
 
 /* Додайте більше кольорів для інших користувачів за потреби */
